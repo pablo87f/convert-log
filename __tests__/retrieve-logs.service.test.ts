@@ -1,14 +1,13 @@
-// import App from '../src/app.js';
 import RetrieveLogService from '../src/services/retrieve-logs.service.js';
 
 describe('Retrieve Logs', () => {
   const log = console.log;
 
   beforeEach(() => {
-    global.console.log = jest.fn(); // create a new mock function for each test
+    global.console.log = jest.fn();
   });
   afterAll(() => {
-    global.console.log = log; // restore original console.log after all tests
+    global.console.log = log;
   });
 
   const inputUrl =
