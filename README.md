@@ -1,54 +1,28 @@
-# node-typescript-boilerplate
+# convert-log
+Challenge to create a console application that receives an URL to retrieve a log file and converts the content to a specific format
 
-[![Sponsor][sponsor-badge]][sponsor]
-[![TypeScript version][ts-badge]][typescript-4-7]
-[![Node.js version][nodejs-badge]][nodejs]
-[![APLv2][license-badge]][license]
-[![Build Status - GitHub Actions][gha-badge]][gha-ci]
+## Example
+`convert http://logstorage.com/minhaCdn1.txt ./output/minhaCdn1.txt`
 
-👩🏻‍💻 Developer Ready: A comprehensive template. Works out of the box for most [Node.js][nodejs] projects.
 
-🏃🏽 Instant Value: All basic tools included and configured:
-
-- [TypeScript][typescript] [4.7][typescript-4-7]
-- [ESM][esm]
-- [ESLint][eslint] with some initial rules recommendation
-- [Jest][jest] for fast unit testing and code coverage
-- Type definitions for Node.js and Jest
-- [Prettier][prettier] to enforce consistent code style
-- NPM [scripts](#available-scripts) for common operations
-- Simple example of TypeScript code and unit test
-- .editorconfig for consistent file format
-- Reproducible environments thanks to [Volta][volta]
-- Example configuration for [GitHub Actions][gh-actions]
-
-🤲 Free as in speech: available under the APLv2 license.
-
-## Getting Started
-
-This project is intended to be used with the latest Active LTS release of [Node.js][nodejs].
-
-### Use as a repository template
-
-To start, just click the **[Use template][repo-template-action]** link (or the green button). Start adding your code in the `src` and unit tests in the `__tests__` directories.
-
-### Clone repository
-
-To clone the repository, use the following commands:
-
-```sh
-git clone https://github.com/jsynowiec/node-typescript-boilerplate
-cd node-typescript-boilerplate
-npm install
+## Input log file example
+```
+312|200|HIT|"GET /robots.txt HTTP/1.1"|100.2
+101|200|MISS|"POST /myImages HTTP/1.1"|319.4
+199|404|MISS|"GET /not-found HTTP/1.1"|142.9
+312|200|INVALIDATE|"GET /robots.txt HTTP/1.1"|245.1
 ```
 
-### Download latest release
-
-Download and unzip the current **main** branch or one of the tags:
-
-```sh
-wget https://github.com/jsynowiec/node-typescript-boilerplate/archive/main.zip -O node-typescript-boilerplate.zip
-unzip node-typescript-boilerplate.zip && rm node-typescript-boilerplate.zip
+## Formatted log file example
+```
+#Version: 1.0
+#Date: 15/12/2017 23:01:06
+#Fields: provider http-method status-code uri-path time-taken
+response-size cache-status
+"MINHA CDN" GET 200 /robots.txt 100 312 HIT
+"MINHA CDN" POST 200 /myImages 319 101 MISS
+"MINHA CDN" GET 404 /not-found 143 199 MISS
+"MINHA CDN" GET 200 /robots.txt 245 312 REFRESH_HIT
 ```
 
 ## Available Scripts
@@ -62,25 +36,6 @@ unzip node-typescript-boilerplate.zip && rm node-typescript-boilerplate.zip
 - `test` - run tests,
 - `test:watch` - interactive watch mode to automatically re-run tests
 
-## Additional Information
-
-### Why include Volta
-
-[Volta][volta]’s toolchain always keeps track of where you are, it makes sure the tools you use always respect the settings of the project you’re working on. This means you don’t have to worry about changing the state of your installed software when switching between projects. For example, it's [used by engineers at LinkedIn][volta-tomdale] to standardize tools and have reproducible development environments.
-
-I recommend to [install][volta-getting-started] Volta and use it to manage your project's toolchain.
-
-### ES Modules
-
-This template uses native [ESM][esm]. Make sure to read [this][nodejs-esm], and [this][ts47-esm] first.
-
-If your project requires CommonJS, you will have to [convert to ESM][sindresorhus-esm].
-
-Please do not open issues for questions regarding CommonJS or ESM on this repo.
-
-## Backers & Sponsors
-
-Support this project by becoming a [sponsor][sponsor].
 
 ## License
 
