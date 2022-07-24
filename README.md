@@ -1,11 +1,13 @@
 # convert-log
+
 Challenge to create a console application that receives an URL to retrieve a log file and converts the content to a specific format
 
 ## Example
-`convert http://logstorage.com/minhaCdn1.txt ./output/minhaCdn1.txt`
 
+`yarn convert http://logstorage.com/minhaCdn1.txt ./output/minhaCdn1.txt`
 
 ## Input log file example
+
 ```
 312|200|HIT|"GET /robots.txt HTTP/1.1"|100.2
 101|200|MISS|"POST /myImages HTTP/1.1"|319.4
@@ -14,6 +16,7 @@ Challenge to create a console application that receives an URL to retrieve a log
 ```
 
 ## Formatted log file example
+
 ```
 #Version: 1.0
 #Date: 15/12/2017 23:01:06
@@ -25,17 +28,45 @@ response-size cache-status
 "MINHA CDN" GET 200 /robots.txt 245 312 REFRESH_HIT
 ```
 
-## Available Scripts
+## How to run:
 
-- `clean` - remove coverage data, Jest cache and transpiled files,
-- `prebuild` - lint source files and tests before building,
-- `build` - transpile TypeScript to ES6,
-- `build:watch` - interactive watch mode to automatically transpile source files,
-- `lint` - lint source files and tests,
-- `prettier` - reformat files,
-- `test` - run tests,
-- `test:watch` - interactive watch mode to automatically re-run tests
+Go inside the project folder `convert-log`
 
+### Install the dependencies:
+
+```
+yarn
+```
+
+or
+
+```
+npm install
+```
+
+### Build the application:
+
+```
+yarn build
+```
+
+or
+
+```
+npm run build
+```
+
+### Run the application:
+
+```
+yarn convert https://s3.amazonaws.com/uux-itaas-static/minha-cdn-logs/input-01.txt ./output/minhaCdn.txt
+```
+
+or
+
+```
+npm run convert https://s3.amazonaws.com/uux-itaas-static/minha-cdn-logs/input-01.txt ./output/minhaCdn.txt
+```
 
 ## License
 
@@ -65,3 +96,6 @@ Licensed under the APLv2. See the [LICENSE](https://github.com/jsynowiec/node-ty
 [sindresorhus-esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 [nodejs-esm]: https://nodejs.org/docs/latest-v16.x/api/esm.html
 [ts47-esm]: https://devblogs.microsoft.com/typescript/announcing-typescript-4-7/#esm-nodejs
+[axios]: https://www.npmjs.com/package/axios
+[date-fns]: https://www.npmjs.com/package/date-fns
+[dot-env]: https://www.npmjs.com/package/dot-env
