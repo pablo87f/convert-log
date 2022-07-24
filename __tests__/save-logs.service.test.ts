@@ -10,7 +10,7 @@ describe('Retrieve Logs', () => {
     global.console.log = log;
   });
 
-  const targetPath = './output/minhaCdn1.txt';
+  const targetPath = './output/test.txt';
 
   const fakeContentText = [
     '#Version: 1.0',

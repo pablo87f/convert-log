@@ -7,7 +7,7 @@ class SaveLogsService {
     private readonly logsContent: string,
   ) {}
 
-  async run() {
+  run() {
     try {
       const dirName = dirname(this.targetPath);
 

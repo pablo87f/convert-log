@@ -6,21 +6,23 @@ class ConvertLogsService {
 
   async run() {
     if (this.logLines) {
-      const minhaNetLogLines = this.logLines.map((line) => {
-        const [responseSize, statusCode, cacheStatus, endpoint, timeTaken] =
-          line.split('|');
-        const [httpMethod, uriPath] = endpoint.replace(/"/g, '').split(' ');
+      const minhaNetLogLines = this.logLines
+        .filter((line) => line.length > 0)
+        .map((line) => {
+          const [responseSize, statusCode, cacheStatus, endpoint, timeTaken] =
+            line.split('|');
+          const [httpMethod, uriPath] = endpoint.replace(/"/g, '').split(' ');
 
-        return {
-          responseSize: parseInt(responseSize),
-          statusCode: parseInt(statusCode),
-          cacheStatus:
-            cacheStatus === 'INVALIDATE' ? 'REFRESH_HIT' : cacheStatus,
-          httpMethod: httpMethod as HttpMethod,
-          uriPath,
-          timeTaken: Math.round(parseFloat(timeTaken)),
-        };
-      });
+          return {
+            responseSize: parseInt(responseSize),
+            statusCode: parseInt(statusCode),
+            cacheStatus:
+              cacheStatus === 'INVALIDATE' ? 'REFRESH_HIT' : cacheStatus,
+            httpMethod: httpMethod as HttpMethod,
+            uriPath,
+            timeTaken: Math.round(parseFloat(timeTaken)),
+          };
+        });
 
       const agoraLogLines = minhaNetLogLines.map(
         ({
