@@ -25,8 +25,6 @@ describe('Start app', () => {
   it('should initialize the application correctly', async () => {
     const app = new App(['', '', inputUrl, outputPath]);
     await app.run();
-    expect(console.log).toHaveBeenLastCalledWith(
-      `running convertion: ${inputUrl} to ${outputPath}`,
-    );
+    expect(console.log).toHaveBeenLastCalledWith(`Application running`);
   });
 });
