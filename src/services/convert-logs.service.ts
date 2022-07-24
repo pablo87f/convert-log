@@ -45,7 +45,7 @@ class ConvertLogsService {
         },
       );
 
-      const version = `#Version: 1.0\n`;
+      const version = `#Version: ${process.env.APP_VERSION}\n`;
       const date = `#Date: ${format(new Date(), 'dd/MM/yyyy HH:mm:ss')}\n`;
       const fields = `#Fields: provider http-method status-code uri-path time-taken response-size cache-status\n`;
       const header = `${version}${date}${fields}`;

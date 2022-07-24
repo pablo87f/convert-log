@@ -7,19 +7,21 @@ class MockDate extends Date {
 }
 
 const OriginalDate = Date;
+const OLD_ENV = process.env;
 
 beforeEach(() => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   global.Date = MockDate;
+  jest.resetModules();
+  process.env = { ...OLD_ENV, APP_VERSION: '1.0' };
 });
 afterAll(() => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   global.Date = OriginalDate;
+  process.env = OLD_ENV;
 });
-
-beforeAll;
 
 describe('Convert Logs', () => {
   const logLines = [
