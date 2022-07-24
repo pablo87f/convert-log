@@ -1,12 +1,18 @@
 # convert-log
 
-Challenge to create a console application that receives an URL to retrieve a log file and converts the content to a specific format
+[![TypeScript version][ts-badge]][typescript-4-7]
+[![Node.js version][nodejs-badge]][nodejs]
+[![APLv2][license-badge]][license]
+
+Challenge to create a console application that retrieves a log file and converts the content to a specific format
+
+It receives a `sourceUrl` and a `targetPath` as parameters
 
 ## Example
 
 `yarn convert http://logstorage.com/minhaCdn1.txt ./output/minhaCdn1.txt`
 
-## Input log file example
+## Source log file example
 
 ```
 312|200|HIT|"GET /robots.txt HTTP/1.1"|100.2
@@ -27,6 +33,10 @@ response-size cache-status
 "MINHA CDN" GET 404 /not-found 143 199 MISS
 "MINHA CDN" GET 200 /robots.txt 245 312 REFRESH_HIT
 ```
+
+## Requirements
+
+Have Node >= 16 installed
 
 ## How to run:
 
